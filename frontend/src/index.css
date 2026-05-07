@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Backgrounds */
+    --background: 48 33% 97%;
+    --foreground: 0 0% 12%;
+
+    /* Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+
+    /* Popovers */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    /* Primary Accent */
+    --primary: 154 100% 13%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 51 12% 92%;
+    --secondary-foreground: 0 0% 12%;
+
+    /* Muted */
+    --muted: 51 12% 92%;
+    --muted-foreground: 60 1% 44%;
+
+    /* Accent */
+    --accent: 51 12% 92%;
+    --accent-foreground: 0 0% 12%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 51 12% 88%;
+    --input: 51 12% 88%;
+    --ring: 154 100% 13%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+  }
+}
+
+@layer utilities {
+  .racing-card {
+    @apply bg-card border border-border shadow-sm transition-all duration-300 rounded-lg;
+  }
+
+  /* FIXED: Custom brackets removed, used standard tailwind shadow */
+  .racing-card:hover {
+    @apply border-primary/40 shadow-xl shadow-primary/10 -translate-y-0.5;
+  }
+
+  .text-gradient-racing {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#006A3A] to-primary;
+  }
+
+  /* FIXED: Custom brackets removed, used standard tailwind shadow */
+  .racing-button {
+    @apply bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30;
+  }
+}
+
+
