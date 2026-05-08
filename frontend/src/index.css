@@ -4,37 +4,38 @@
 
 @layer base {
   :root {
-    /* British Racing Green - Dark Theme */
-    --background: 150 30% 5%;      /* Khub j dark green background */
-    --foreground: 120 15% 95%;     /* Off-white text */
+    /* Pure White Background - Light Theme */
+    --background: 0 0% 100%;
+    --foreground: 150 30% 5%;
 
-    --card: 150 25% 8%;            /* Darker green for cards */
-    --card-foreground: 120 15% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 30% 10%;
 
-    --popover: 150 28% 7%;
-    --popover-foreground: 120 15% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 30% 10%;
 
-    /* Primary: The Signature Green */
+    /* Premium Green Accents */
     --primary: 152 64% 28%;        /* Signature British Green (#0F5132) */
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary */
-    --secondary: 150 20% 12%;
-    --secondary-foreground: 120 15% 85%;
+    /* Subtle Green for secondary elements */
+    --secondary: 150 20% 96%;
+    --secondary-foreground: 152 64% 20%;
 
     /* Muted */
-    --muted: 150 18% 10%;
-    --muted-foreground: 140 12% 55%;
+    --muted: 150 15% 96%;
+    --muted-foreground: 150 10% 45%;
 
     /* Accent: Luxury Gold */
     --accent: 43 74% 48%;          /* Luxury Gold accent (#C9A22A) */
     --accent-foreground: 0 0% 10%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 20% 15%;
-    --input: 150 20% 15%;
+    /* Emerald/Green border for cards */
+    --border: 150 20% 90%;
+    --input: 150 20% 90%;
     --ring: 152 64% 28%;
 
     --radius: 0.75rem;
