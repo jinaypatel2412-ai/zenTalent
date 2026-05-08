@@ -4,57 +4,58 @@
 
 @layer base {
   :root {
-    /* Highly Polished Dark Mode Scheme */
-    --background: 228 35% 4%; /* Deep midnight/slate */
-    --foreground: 210 40% 98%;
+    /* ── British Racing Green ── */
+    --background: 150 30% 4%;        /* near-black with green tint */
+    --foreground: 120 15% 92%;       /* warm off-white */
 
-    --card: 228 35% 6%;
-    --card-foreground: 210 40% 98%;
+    --card: 150 28% 6%;
+    --card-foreground: 120 15% 92%;
 
-    --popover: 228 35% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 150 28% 7%;
+    --popover-foreground: 120 15% 92%;
 
-    /* Primary: Vibrant Indigo */
-    --primary: 238 90% 66%;
+    /* Primary: British Racing Green */
+    --primary: 152 64% 28%;          /* #0F5132 deep racing green */
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Muted Slate */
-    --secondary: 228 20% 15%;
-    --secondary-foreground: 210 40% 98%;
+    /* Secondary: Muted Forest */
+    --secondary: 150 20% 12%;
+    --secondary-foreground: 120 15% 85%;
 
     /* Muted */
-    --muted: 228 20% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 150 18% 10%;
+    --muted-foreground: 140 12% 55%;
 
-    /* Accent: Electric Violet */
-    --accent: 260 90% 66%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Burnished Gold */
+    --accent: 43 74% 48%;            /* #C9A22A aged-gold accent */
+    --accent-foreground: 0 0% 8%;
 
-    --destructive: 350 89% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders: highly translucent for glass effect */
-    --border: 228 20% 15%;
-    --input: 228 20% 15%;
-    --ring: 238 90% 66%;
+    /* Borders */
+    --border: 150 18% 14%;
+    --input: 150 18% 14%;
+    --ring: 152 64% 28%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
 
-    --sidebar-background: 228 35% 5%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 238 90% 66%;
+    --sidebar-background: 150 30% 3%;
+    --sidebar-foreground: 120 15% 85%;
+    --sidebar-primary: 152 64% 28%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 228 20% 12%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 228 20% 15%;
-    --sidebar-ring: 238 90% 66%;
+    --sidebar-accent: 150 20% 10%;
+    --sidebar-accent-foreground: 120 15% 85%;
+    --sidebar-border: 150 18% 12%;
+    --sidebar-ring: 43 74% 48%;
 
-    /* Custom Color Tokens for specific highlights */
-    --indigo: 238 90% 66%;
-    --violet: 260 90% 66%;
-    --sky: 199 89% 50%;
-    --emerald: 160 84% 45%;
-    --rose: 347 77% 55%;
+    /* Named tokens */
+    --green:   152 64% 28%;
+    --gold:     43 74% 48%;
+    --cream:   48 40% 88%;
+    --emerald: 160 60% 38%;
+    --rose:    347 70% 52%;
+    --sky:     199 80% 48%;
   }
 }
 
@@ -65,40 +66,58 @@
 
   body {
     @apply bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
   }
 }
 
-/* Custom Advanced Animation Utilities */
 @layer utilities {
+  /* Glassmorphism card */
   .glass {
-    @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+    @apply bg-card/60 backdrop-blur-xl border border-white/[0.06] shadow-2xl;
   }
-  
+
   .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-lg border border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.12)];
+    @apply bg-white/[0.02] backdrop-blur-lg border border-white/[0.04]
+           shadow-[0_8px_30px_rgb(0,0,0,0.18)];
   }
 
+  /* Green-tinted gradient text */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-sky-400;
+    @apply bg-clip-text text-transparent
+           bg-gradient-to-r from-primary via-emerald-400 to-yellow-400;
   }
 
+  /* Gold shimmer button */
   .glow-button {
     @apply relative overflow-hidden transition-all duration-300;
   }
-  
+
   .glow-button::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 transition-opacity duration-300;
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0
+           transition-opacity duration-300;
   }
-  
+
   .glow-button:hover::before {
     @apply opacity-100;
   }
-  
+
   .glow-button > * {
     @apply relative z-10;
   }
+
+  /* Subtle racing stripe */
+  .racing-stripe {
+    background: linear-gradient(
+      to right,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent))  50%,
+      hsl(var(--primary)) 100%
+    );
+    height: 2px;
+  }
 }
-
-
-
