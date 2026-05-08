@@ -4,59 +4,41 @@
 
 @layer base {
   :root {
-    /* Pure White Background - Light Theme */
+    /* Background: Pure White hovathi Dark Green text ane accents vadhare uplay aavse */
     --background: 0 0% 100%;
-    --foreground: 150 30% 5%;
+    --foreground: 160 50% 2%;     /* Extra Dark Green-Black text */
 
     --card: 0 0% 100%;
-    --card-foreground: 150 30% 10%;
+    --card-foreground: 160 50% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 30% 10%;
+    --popover-foreground: 160 50% 5%;
 
-    /* Premium Green Accents */
-    --primary: 152 64% 28%;        /* Signature British Green (#0F5132) */
+    /* Primary: Deeper British Racing Green (#0A3622) */
+    --primary: 154 68% 13%;        /* Aa pehla karta vadhare dark che */
     --primary-foreground: 0 0% 100%;
 
-    /* Subtle Green for secondary elements */
-    --secondary: 150 20% 96%;
-    --secondary-foreground: 152 64% 20%;
+    /* Secondary: Very Light Green Tint */
+    --secondary: 154 30% 96%;
+    --secondary-foreground: 154 68% 10%;
 
     /* Muted */
-    --muted: 150 15% 96%;
-    --muted-foreground: 150 10% 45%;
+    --muted: 154 30% 96%;
+    --muted-foreground: 154 10% 40%;
 
-    /* Accent: Luxury Gold */
-    --accent: 43 74% 48%;          /* Luxury Gold accent (#C9A22A) */
-    --accent-foreground: 0 0% 10%;
+    /* Accent: Deep Gold / Bronze touch */
+    --accent: 38 65% 42%;          /* #B3862B aged gold */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Emerald/Green border for cards */
-    --border: 150 20% 90%;
-    --input: 150 20% 90%;
-    --ring: 152 64% 28%;
+    /* Borders: Khub j subtle green tint */
+    --border: 154 30% 90%;
+    --input: 154 30% 90%;
+    --ring: 154 68% 13%;
 
     --radius: 0.75rem;
-
-    /* Sidebar */
-    --sidebar-background: 150 30% 3%;
-    --sidebar-foreground: 120 15% 85%;
-    --sidebar-primary: 152 64% 28%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 150 20% 10%;
-    --sidebar-accent-foreground: 120 15% 85%;
-    --sidebar-border: 150 18% 12%;
-    --sidebar-ring: 43 74% 48%;
-
-    /* Named color tokens */
-    --green:   152 64% 28%;
-    --gold:     43 74% 48%;
-    --cream:    48 40% 88%;
-    --emerald: 160 60% 38%;
-    --rose:    347 70% 52%;
-    --sky:     199 80% 48%;
   }
 }
 
@@ -70,31 +52,16 @@
   }
 }
 
+/* Photo jeva clean cards mate aa utility vapro */
 @layer utilities {
-  .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-lg border border-white/[0.05] shadow-2xl;
+  .premium-shadow {
+    @apply shadow-[0_10px_40px_rgb(10,54,34,0.06)] border border-emerald-900/5;
   }
-
-  /* Glassmorphism Effect for cards */
-  .glass-panel {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
-  }
-
-  .glass {
-    @apply bg-card/60 backdrop-blur-xl border border-white/[0.06] shadow-2xl;
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-yellow-400;
-  }
-
-  .racing-stripe {
-    background: linear-gradient(
-      to right,
-      hsl(var(--primary)) 0%,
-      hsl(var(--accent))  50%,
-      hsl(var(--primary)) 100%
-    );
-    height: 2px;
+  
+  .premium-card {
+    @apply bg-white border border-emerald-100/50 shadow-[0_4px_20px_rgb(0,0,0,0.03)] 
+           hover:shadow-[0_8px_30px_rgb(15,81,50,0.08)] transition-all duration-300;
   }
 }
+
+

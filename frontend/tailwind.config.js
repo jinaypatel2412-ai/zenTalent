@@ -52,13 +52,6 @@ var config = {
                     DEFAULT:    "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
-                // ── British Racing Green custom tokens ──
-                green:   "hsl(var(--green))",
-                gold:    "hsl(var(--gold))",
-                cream:   "hsl(var(--cream))",
-                emerald: "hsl(var(--emerald))",
-                rose:    "hsl(var(--rose))",
-                sky:     "hsl(var(--sky))",
                 sidebar: {
                     DEFAULT:              "hsl(var(--sidebar-background))",
                     foreground:           "hsl(var(--sidebar-foreground))",
@@ -95,3 +88,4 @@ var config = {
 };
 
 export default config;
+
