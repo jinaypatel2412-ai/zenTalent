@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    /* ── British Racing Green ── */
-    --background: 150 30% 4%;        /* near-black with green tint */
-    --foreground: 120 15% 92%;       /* warm off-white */
+    /* Background: Deep British Racing Green */
+    --background: 150 30% 4%;
+    --foreground: 120 15% 92%;
 
     --card: 150 28% 6%;
     --card-foreground: 120 15% 92%;
@@ -14,11 +14,11 @@
     --popover: 150 28% 7%;
     --popover-foreground: 120 15% 92%;
 
-    /* Primary: British Racing Green */
-    --primary: 152 64% 28%;          /* #0F5132 deep racing green */
+    /* Primary: The Signature Green */
+    --primary: 152 64% 28%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Muted Forest */
+    /* Secondary */
     --secondary: 150 20% 12%;
     --secondary-foreground: 120 15% 85%;
 
@@ -27,19 +27,19 @@
     --muted-foreground: 140 12% 55%;
 
     /* Accent: Burnished Gold */
-    --accent: 43 74% 48%;            /* #C9A22A aged-gold accent */
+    --accent: 43 74% 48%;
     --accent-foreground: 0 0% 8%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders */
     --border: 150 18% 14%;
     --input: 150 18% 14%;
     --ring: 152 64% 28%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
+    /* Sidebar */
     --sidebar-background: 150 30% 3%;
     --sidebar-foreground: 120 15% 85%;
     --sidebar-primary: 152 64% 28%;
@@ -49,10 +49,10 @@
     --sidebar-border: 150 18% 12%;
     --sidebar-ring: 43 74% 48%;
 
-    /* Named tokens */
+    /* Named color tokens */
     --green:   152 64% 28%;
     --gold:     43 74% 48%;
-    --cream:   48 40% 88%;
+    --cream:    48 40% 88%;
     --emerald: 160 60% 38%;
     --rose:    347 70% 52%;
     --sky:     199 80% 48%;
@@ -66,51 +66,22 @@
 
   body {
     @apply bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground;
-    font-feature-settings: "kern" 1, "liga" 1;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
   }
 }
 
 @layer utilities {
-  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/[0.02] backdrop-blur-lg border border-white/[0.05] shadow-2xl;
+  }
+
   .glass {
     @apply bg-card/60 backdrop-blur-xl border border-white/[0.06] shadow-2xl;
   }
 
-  .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-lg border border-white/[0.04]
-           shadow-[0_8px_30px_rgb(0,0,0,0.18)];
-  }
-
-  /* Green-tinted gradient text */
   .text-gradient {
-    @apply bg-clip-text text-transparent
-           bg-gradient-to-r from-primary via-emerald-400 to-yellow-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-yellow-400;
   }
 
-  /* Gold shimmer button */
-  .glow-button {
-    @apply relative overflow-hidden transition-all duration-300;
-  }
-
-  .glow-button::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0
-           transition-opacity duration-300;
-  }
-
-  .glow-button:hover::before {
-    @apply opacity-100;
-  }
-
-  .glow-button > * {
-    @apply relative z-10;
-  }
-
-  /* Subtle racing stripe */
   .racing-stripe {
     background: linear-gradient(
       to right,
