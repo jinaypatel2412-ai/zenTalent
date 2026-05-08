@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const JobsList = () => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

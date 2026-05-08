@@ -26,6 +26,8 @@ import Features from "./pages/Features";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
+import EditorialShowcase from "./pages/EditorialShowcase";
+import JobsList from "./JobsList";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,8 @@ const App = () => (
           <MagicCursor />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/editorial" element={<EditorialShowcase />} />
+            <Route path="/jobs" element={<JobsList />} />
             <Route path="/features" element={<Features />} />
             <Route path="/about" element={<About />} />
             <Route path="/pricing" element={<Pricing />} />

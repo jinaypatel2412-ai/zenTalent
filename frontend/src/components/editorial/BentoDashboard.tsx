@@ -6,9 +6,9 @@ import {
 import React from "react";
 
 // ── Tween configs ────────────────────────────────────────────
-const TWEEN_CARD = { type: "tween", ease: "easeOut", duration: 0.4 };
-const TWEEN_BUTTON = { type: "tween", ease: "easeOut", duration: 0.15 };
-const TWEEN_ITEM = { type: "tween", ease: "easeOut", duration: 0.35 };
+const TWEEN_CARD = { type: "tween" as const, ease: "easeOut" as const, duration: 0.4 };
+const TWEEN_BUTTON = { type: "tween" as const, ease: "easeOut" as const, duration: 0.15 };
+const TWEEN_ITEM = { type: "tween" as const, ease: "easeOut" as const, duration: 0.35 };
 
 const gridContainer = {
   hidden: { opacity: 0 },
@@ -24,11 +24,14 @@ const cardVariant = {
 function BentoCard({
   children,
   className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <motion.div
       variants={cardVariant}
-      whileHover={{ y: -2, transition: { type: "tween", ease: "easeOut", duration: 0.2 } }}
+      whileHover={{ y: -2, transition: { type: "tween" as const, ease: "easeOut" as const, duration: 0.2 } }}
       className={`bg-card border border-border shadow-sm transition-all duration-300 rounded-xl relative overflow-hidden p-7 ${className}`}
     >
       {children}
@@ -37,7 +40,7 @@ function BentoCard({
 }
 
 // ── Section label ─────────────────────────────────────────────
-function Label({ children }) {
+function Label({ children }: { children: React.ReactNode }) {
   return <span className="text-[11px] font-medium tracking-widest uppercase text-muted-foreground">{children}</span>;
 }
 
@@ -78,6 +81,9 @@ function MiniBarChart() {
 function ProgressRing({
   value,
   size = 76,
+}: {
+  value: number;
+  size?: number;
 }) {
   const r = (size - 8) / 2;
   const circ = 2 * Math.PI * r;
@@ -121,6 +127,11 @@ function ActivityItem({
   text,
   time,
   type,
+}: {
+  icon: React.ReactNode;
+  text: string;
+  time: string;
+  type: "success" | "warning" | "info";
 }) {
   const colorClass = {
     success: "text-green-400",
@@ -228,7 +239,12 @@ function SystemHealthCard() {
 
 // ── CARD 3: Activity feed ─────────────────────────────────────
 function ActivityCard() {
-  const items = [
+  const items: Array<{
+    icon: React.ReactNode;
+    text: string;
+    time: string;
+    type: "success" | "warning" | "info";
+  }> = [
     { icon: <Users size={12} />, text: "48 new signups in last hour", time: "2 min ago", type: "success" },
     { icon: <AlertCircle size={12} />, text: "Rate limit warning — API gateway", time: "11 min ago", type: "warning" },
     { icon: <FileText size={12} />, text: "Quarterly report exported by admin", time: "34 min ago", type: "info" },
@@ -243,7 +259,7 @@ function ActivityCard() {
           <motion.span
             className="h-1.5 w-1.5 rounded-full bg-green-400"
             animate={{ opacity: [1, 0.3, 1] }}
-            transition={{ duration: 1.6, repeat: Infinity }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "linear" as const }}
           />
           LIVE
         </span>
@@ -289,7 +305,7 @@ function QuickActionsCard() {
           <motion.button
             key={a.label}
             whileTap={{ scale: 0.97, transition: TWEEN_BUTTON }}
-            whileHover={{ y: -1, transition: { type: "spring", stiffness: 260, damping: 22 } }}
+            whileHover={{ y: -1, transition: { type: "spring" as const, stiffness: 260, damping: 22 } }}
             className={`flex flex-col items-start gap-2 p-4 text-left border rounded-lg bg-card cursor-pointer transition-colors duration-200 ${a.highlight ? 'border-primary/20 hover:border-primary/40' : 'border-border hover:border-muted-foreground/30'}`}
           >
             <span

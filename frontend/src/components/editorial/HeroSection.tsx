@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Users, Zap, BarChart3 } from "lucide-react";
 
