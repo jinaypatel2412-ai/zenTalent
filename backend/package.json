@@ -1,11 +1,17 @@
 {
   "name": "zentalent-backend",
   "version": "1.0.0",
-  "description": "Zentalent Backend (Python FastAPI)",
-  "main": "main.py",
+  "description": "Zentalent Backend",
+  "main": "index.js",
   "scripts": {
-    "start": "python main.py",
-    "dev": "python main.py"
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "postgres": "^3.4.9",
+    "express": "^4.18.2",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5"
   },
   "author": "",
   "license": "ISC"

@@ -4,78 +4,101 @@
 
 @layer base {
   :root {
-    /* Backgrounds */
-    --background: 48 33% 97%;
-    --foreground: 0 0% 12%;
+    /* Highly Polished Dark Mode Scheme */
+    --background: 228 35% 4%; /* Deep midnight/slate */
+    --foreground: 210 40% 98%;
 
-    /* Cards */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 12%;
+    --card: 228 35% 6%;
+    --card-foreground: 210 40% 98%;
 
-    /* Popovers */
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
+    --popover: 228 35% 6%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Primary Accent */
-    --primary: 154 100% 13%;
+    /* Primary: Vibrant Indigo */
+    --primary: 238 90% 66%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary */
-    --secondary: 51 12% 92%;
-    --secondary-foreground: 0 0% 12%;
+    /* Secondary: Muted Slate */
+    --secondary: 228 20% 15%;
+    --secondary-foreground: 210 40% 98%;
 
     /* Muted */
-    --muted: 51 12% 92%;
-    --muted-foreground: 60 1% 44%;
+    --muted: 228 20% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    /* Accent */
-    --accent: 51 12% 92%;
-    --accent-foreground: 0 0% 12%;
+    /* Accent: Electric Violet */
+    --accent: 260 90% 66%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Destructive */
-    --destructive: 0 84% 60%;
+    --destructive: 350 89% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders */
-    --border: 51 12% 88%;
-    --input: 51 12% 88%;
-    --ring: 154 100% 13%;
+    /* Borders: highly translucent for glass effect */
+    --border: 228 20% 15%;
+    --input: 228 20% 15%;
+    --ring: 238 90% 66%;
 
-    /* Radius */
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    --sidebar-background: 228 35% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 238 90% 66%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 20% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 228 20% 15%;
+    --sidebar-ring: 238 90% 66%;
+
+    /* Custom Color Tokens for specific highlights */
+    --indigo: 238 90% 66%;
+    --violet: 260 90% 66%;
+    --sky: 199 89% 50%;
+    --emerald: 160 84% 45%;
+    --rose: 347 77% 55%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
 
-  html {
-    color-scheme: light;
-  }
-
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    @apply bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground;
   }
 }
 
+/* Custom Advanced Animation Utilities */
 @layer utilities {
-  .racing-card {
-    @apply bg-card border border-border shadow-sm transition-all duration-300 rounded-lg;
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+  
+  .glass-card {
+    @apply bg-white/[0.02] backdrop-blur-lg border border-white/[0.05] shadow-[0_8px_30px_rgb(0,0,0,0.12)];
   }
 
-  /* FIXED: Custom brackets removed, used standard tailwind shadow */
-  .racing-card:hover {
-    @apply border-primary/40 shadow-xl shadow-primary/10 -translate-y-0.5;
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-sky-400;
   }
 
-  .text-gradient-racing {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#006A3A] to-primary;
+  .glow-button {
+    @apply relative overflow-hidden transition-all duration-300;
   }
-
-  /* FIXED: Custom brackets removed, used standard tailwind shadow */
-  .racing-button {
-    @apply bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30;
+  
+  .glow-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 transition-opacity duration-300;
+  }
+  
+  .glow-button:hover::before {
+    @apply opacity-100;
+  }
+  
+  .glow-button > * {
+    @apply relative z-10;
   }
 }
+
 
 
