@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Mic, MicOff, Send, Loader2, CheckCircle2, ChevronLeft, ChevronRight, Volume2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { evaluateInterviewAnswers } from "@/lib/gemini";
