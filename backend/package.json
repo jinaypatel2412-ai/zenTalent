@@ -1,0 +1,12 @@
+{
+  "name": "zentalent-backend",
+  "version": "1.0.0",
+  "description": "Zentalent Backend (Python FastAPI)",
+  "main": "main.py",
+  "scripts": {
+    "start": "python main.py",
+    "dev": "python main.py"
+  },
+  "author": "",
+  "license": "ISC"
+}
