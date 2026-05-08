@@ -18,6 +18,8 @@ import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
 import JobPostings from "./pages/JobPostings";
 import Interviews from "./pages/Interviews";
+import Candidates from "./pages/Candidates";
+import CandidateDetails from "./pages/CandidateDetails";
 import DashboardSettings from "./pages/DashboardSettings";
 import HomeFeed from "./pages/HomeFeed";
 import CreatePost from "./pages/CreatePost";
@@ -55,6 +57,8 @@ const App = () => (
             <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout><Dashboard /></DashboardLayout></ProtectedRoute>} />
             <Route path="/dashboard/jobs" element={<ProtectedRoute><DashboardLayout><JobPostings /></DashboardLayout></ProtectedRoute>} />
             <Route path="/dashboard/interviews" element={<ProtectedRoute><DashboardLayout><Interviews /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/dashboard/candidates" element={<ProtectedRoute><DashboardLayout><Candidates /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/dashboard/candidates/:id" element={<ProtectedRoute><DashboardLayout><CandidateDetails /></DashboardLayout></ProtectedRoute>} />
             <Route path="/dashboard/settings" element={<ProtectedRoute><DashboardLayout><DashboardSettings /></DashboardLayout></ProtectedRoute>} />
             <Route path="/dashboard/feed" element={<ProtectedRoute><DashboardLayout><HomeFeed /></DashboardLayout></ProtectedRoute>} />
             <Route path="/dashboard/create" element={<ProtectedRoute><DashboardLayout><CreatePost /></DashboardLayout></ProtectedRoute>} />

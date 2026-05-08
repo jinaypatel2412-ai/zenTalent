@@ -12,6 +12,10 @@ app.use(express.json());
 // Database connection (using environment variable for production)
 const sql = postgres(process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/zentalent');
 
+// Routes
+const interviewRoutes = require('./routes/interview');
+app.use('/api', interviewRoutes);
+
 app.get('/', (req, res) => {
   res.json({ message: 'Zentalent Backend (Node.js) is running!' });
 });

@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
-import { Search, Filter, Trash2, Eye, MoreHorizontal } from "lucide-react";
+import { Search, Filter, Trash2, Eye, MoreHorizontal, Calendar as CalendarIcon } from "lucide-react";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import InterviewModal from "@/components/InterviewModal";
 
 export default function Candidates() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [candidates, setCandidates] = useState<any[]>([]);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [loading, setLoading] = useState(true);
+  
+  // Modal states
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState<{name: string, id: string} | null>(null);
+
+  const openScheduleModal = (candidate: any) => {
+    setSelectedCandidate({ name: candidate.name, id: candidate.id });
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -145,9 +156,25 @@ export default function Candidates() {
                       </select>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button onClick={() => deleteCandidate(c.id)} className="text-muted-foreground hover:text-destructive transition-colors p-1.5 rounded-lg hover:bg-destructive/10">
-                        <Trash2 size={15} />
-                      </button>
+                      <div className="flex justify-end gap-2">
+                        <button 
+                          onClick={() => navigate(`/dashboard/candidates/${c.id}`)} 
+                          className="text-muted-foreground hover:text-primary transition-colors p-1.5 rounded-lg hover:bg-primary/10"
+                          title="View Details"
+                        >
+                          <Eye size={15} />
+                        </button>
+                        <button 
+                          onClick={() => openScheduleModal(c)} 
+                          className="text-muted-foreground hover:text-emerald-600 transition-colors p-1.5 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-500/10"
+                          title="Schedule Interview"
+                        >
+                          <CalendarIcon size={15} />
+                        </button>
+                        <button onClick={() => deleteCandidate(c.id)} className="text-muted-foreground hover:text-destructive transition-colors p-1.5 rounded-lg hover:bg-destructive/10">
+                          <Trash2 size={15} />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -156,6 +183,15 @@ export default function Candidates() {
           </div>
         )}
       </div>
+
+      {/* Modals */}
+      {selectedCandidate && (
+        <InterviewModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          candidateName={selectedCandidate.name} 
+        />
+      )}
     </div>
   );
 }
