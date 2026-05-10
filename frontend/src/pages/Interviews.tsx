@@ -40,19 +40,35 @@ export default function Interviews() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      console.log("Interviews: No user found in context");
+      setLoading(false);
+      return;
+    }
+
     const fetch = async () => {
+      setLoading(true);
+      console.log("Interviews: Fetching applications for user:", user.id);
       try {
         const { data, error } = await supabase.from("job_applications")
           .select("*, job_postings(title, company)")
           .eq("user_id", user.id)
           .order("created_at", { ascending: false });
         
-        if (!error && data) {
+        if (error) {
+          console.error("Interviews: Supabase error:", error);
+          toast.error("Error loading applications: " + error.message);
+        } else if (data) {
+          console.log("Interviews: Applications found:", data.length);
           setApplications(data);
+          if (data.length > 0 && !selectedApp) {
+            // Auto-select first application
+            // setSelectedApp(data[0].id);
+          }
         }
       } catch (err) {
-        console.error("Error fetching applications", err);
+        console.error("Interviews: Unexpected error fetching applications:", err);
+        toast.error("An unexpected error occurred while loading your applications.");
       }
       setLoading(false);
     };
