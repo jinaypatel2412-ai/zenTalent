@@ -41,34 +41,47 @@ export default function Interviews() {
 
   useEffect(() => {
     if (!user) {
-      console.log("Interviews: No user found in context");
       setLoading(false);
       return;
     }
 
     const fetch = async () => {
       setLoading(true);
-      console.log("Interviews: Fetching applications for user:", user.id);
       try {
-        const { data, error } = await supabase.from("job_applications")
-          .select("*, job_postings(title, company)")
+        console.log("Fetching applications for user ID:", user.id);
+        
+        // Simplified query to ensure we get data even if the join has issues
+        const { data, error } = await supabase
+          .from("job_applications")
+          .select(`
+            *,
+            job_postings:job_posting_id (
+              title,
+              company
+            )
+          `)
           .eq("user_id", user.id)
           .order("created_at", { ascending: false });
         
         if (error) {
-          console.error("Interviews: Supabase error:", error);
-          toast.error("Error loading applications: " + error.message);
-        } else if (data) {
-          console.log("Interviews: Applications found:", data.length);
-          setApplications(data);
-          if (data.length > 0 && !selectedApp) {
-            // Auto-select first application
-            // setSelectedApp(data[0].id);
+          console.error("Fetch error:", error);
+          // If the join query fails, try a simple query as fallback
+          const { data: simpleData, error: simpleError } = await supabase
+            .from("job_applications")
+            .select("*")
+            .eq("user_id", user.id);
+            
+          if (simpleError) {
+            toast.error("Failed to load applications: " + simpleError.message);
+          } else {
+            setApplications(simpleData || []);
           }
+        } else if (data) {
+          console.log("Applications loaded:", data);
+          setApplications(data);
         }
       } catch (err) {
-        console.error("Interviews: Unexpected error fetching applications:", err);
-        toast.error("An unexpected error occurred while loading your applications.");
+        console.error("Unexpected error:", err);
       }
       setLoading(false);
     };
