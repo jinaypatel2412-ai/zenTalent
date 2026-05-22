@@ -31,3 +31,12 @@ class Resume(Base):
     parsed_skills = Column(String, nullable=True)
 
 
+# --- Application Model ---
+class Application(Base):
+    __tablename__ = "applications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, index=True)
+    job_id = Column(Integer, index=True)
+    resume_id = Column(Integer, nullable=True)  # Optional: Link to resume
+    status = Column(String, default="applied") # applied, viewed, shortlisted, rejected 
