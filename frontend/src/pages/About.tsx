@@ -1,6 +1,6 @@
 import { Award, Brain, Globe2, Users } from "lucide-react";
 import { Link } from "react-router-dom";
-import { MarketingShell } from "@/components/MarketingShell";
+import { MarketingShell } from "@/components/layout/MarketingShell";
 
 const values = [
   {

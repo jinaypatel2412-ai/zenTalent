@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import InterviewModal from "@/components/InterviewModal";
+import InterviewModal from "@/components/interview/InterviewModal";
 
 export default function CandidateDetails() {
   const { id } = useParams<{ id: string }>();

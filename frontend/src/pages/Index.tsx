@@ -5,10 +5,10 @@ import {
   ChevronRight, Twitter, Linkedin, Github, Menu, X,
   Zap, TrendingUp, Users, Shield, ArrowRight, Sparkles,
 } from "lucide-react";
-import { CandidateCard } from "@/components/CandidateCard";
-import { FeatureCard } from "@/components/FeatureCard";
-import { CircularProgress } from "@/components/CircularProgress";
-import { SkillTag } from "@/components/SkillTag";
+import { CandidateCard } from "@/components/shared/CandidateCard";
+import { FeatureCard } from "@/components/shared/FeatureCard";
+import { CircularProgress } from "@/components/shared/CircularProgress";
+import { SkillTag } from "@/components/shared/SkillTag";
 import type { LucideIcon } from "lucide-react";
 
 const marketingNavLinks = [

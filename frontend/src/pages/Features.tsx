@@ -1,7 +1,7 @@
 import { Brain, Code2, Video, Shield, Zap, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import { FeatureCard } from "@/components/FeatureCard";
-import { MarketingShell } from "@/components/MarketingShell";
+import { FeatureCard } from "@/components/shared/FeatureCard";
+import { MarketingShell } from "@/components/layout/MarketingShell";
 
 const featureList = [
   {

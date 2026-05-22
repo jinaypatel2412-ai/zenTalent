@@ -3,7 +3,7 @@ import { Code2, Play, Send, Loader2, CheckCircle2, XCircle, ChevronLeft, Chevron
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-import { CodingProblem, getCodingProblemsForJob } from "@/lib/codingBank";
+import { CodingProblem, getCodingProblemsForJob } from "@/services/codingBank";
 
 interface CodingChallengeProps {
   jobTitle: string;

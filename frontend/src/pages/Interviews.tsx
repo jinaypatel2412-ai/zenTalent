@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Mic, Code2, Brain, Play, ArrowLeft, Shield } from "lucide-react";
-import { VoiceInterview } from "@/components/VoiceInterview";
-import { CodingChallenge } from "@/components/CodingChallenge";
-import { Proctoring } from "@/components/Proctoring";
+import { VoiceInterview } from "@/components/interview/VoiceInterview";
+import { CodingChallenge } from "@/components/interview/CodingChallenge";
+import { Proctoring } from "@/components/interview/Proctoring";
 import { toast } from "sonner";
-import { getQuestionsForJob, InterviewQuestion } from "@/lib/questionBank";
+import { getQuestionsForJob, InterviewQuestion } from "@/services/questionBank";
 import { Loader2 } from "lucide-react";
 
 

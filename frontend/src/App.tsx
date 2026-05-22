@@ -5,10 +5,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { ProtectedRoute } from "@/components/ProtectedRoute";
-import { DashboardLayout } from "@/components/DashboardLayout";
-import { CommandPalette } from "@/components/CommandPalette";
-import { MagicCursor } from "@/components/MagicCursor";
+import { ProtectedRoute } from "@/components/shared/ProtectedRoute";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { CommandPalette } from "@/components/shared/CommandPalette";
+import { MagicCursor } from "@/components/shared/MagicCursor";
 
 import Index from "./pages/Index";
 import Login from "./pages/Login";
@@ -29,7 +29,7 @@ import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 import EditorialShowcase from "./pages/EditorialShowcase";
-import JobsList from "./JobsList";
+import JobsList from "./pages/JobsList";
 
 const queryClient = new QueryClient();
 

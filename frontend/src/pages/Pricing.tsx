@@ -1,6 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { MarketingShell } from "@/components/MarketingShell";
+import { MarketingShell } from "@/components/layout/MarketingShell";
 
 const plans = [
   {

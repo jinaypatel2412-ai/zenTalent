@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Search, Filter, Trash2, Eye, MoreHorizontal, Calendar as CalendarIcon } from "lucide-react";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
-import InterviewModal from "@/components/InterviewModal";
+import InterviewModal from "@/components/interview/InterviewModal";
 
 export default function Candidates() {
   const { user } = useAuth();
